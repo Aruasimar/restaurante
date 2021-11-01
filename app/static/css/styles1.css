@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+:root{
+    --login-bg: #fa6767;
+    --title-bg: black;
+    --button-bg: red;
+    --image-bg:white;
+
+}
+
+body{
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(to top, rgb(245, 142, 142) 0%, red 100%);
+}
+
+.login-container{
+    height: 43.75em;
+    width: 60em;
+    margin: 6em auto;
+    display: flex;
+    justify-content:space-between;
+    overflow: hidden;
+}
+
+.login-info-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border:2px solid red;
+    padding-top: 0.5rem;
+    background-color: var(--login-bg);
+}
+
+.image-login{
+    padding-top: 0rem;
+    background-color: var(--image-bg);
+}
+
+.title{
+    text-transform: capitalize;
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--title-bg);
+}
+
+.register-container2{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    
+    padding-top: 0.5rem;
+    justify-content:space-between
+    flex-direction:justify-content;
+}
+
+.register-container1{
+    flex-direction:justify-content;
+    border:5px solid red;
+    justify-content:space-between
+}
+
+.acept, .p2{
+    font-size:12px;
+}
+
+.p1{
+    font-size: 18px;
+}

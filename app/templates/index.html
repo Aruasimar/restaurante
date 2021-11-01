@@ -1,0 +1,104 @@
+{% extends "header.html" %}
+{% block title %} Le Madeleine{% endblock %}
+{% block content %}
+<!--Barra de búsqueda o Search-->
+<div class="container-fluid mt-2">
+  <!-- Content here -->
+  <form class="form-inline my-2 my-lg-0 mx-auto d-flex">
+    <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+<!--Div FILTRAR con Entradas, Platos Fuertes y Postres-->
+<div class="row justify-content-md-center">
+    <div class="col-2 filtro">
+      <h3 class="text-center">FILTRAR</h3>
+      <aside class="px-3" id="cards">
+        <!--Entradas-->
+        <div class="form-check form-switch">
+          <input class="form-check-input micheckbox" type="checkbox" id="entradas" name="entradas" value="entradas">
+          <label class="form-check-label" for="entradas">Entradas</label>
+        </div>
+        <!--Platos fuertes-->
+        <div class="form-check form-switch">
+          <input class="form-check-input micheckbox" type="checkbox" id="Pfuertes" name="Pfuertes" value="fuertes" >
+          <label class="form-check-label" for="Pfuertes">Platos Fuertes</label>
+        </div>
+        <!--Postres-->
+        <div class="form-check form-switch">
+          <input class="form-check-input micheckbox" type="checkbox" id="postres" value="postres" >
+          <label class="form-check-label" for="postres">Postres</label>
+        </div>
+      </aside>
+    </div>
+    <!--Div que muestra: Entrada 1, Entrada 2, Fuerte 1, Fuerte 2, Postre 1, Postre 2-->
+    <div class="col-10">
+        <!--Div Entrada 1-->
+        <div class="card mt-3 entrada" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Entrada 1</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo 1</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+        </div>
+        <!--Div Entrada 2-->
+        <div class="card mt-3 entrada" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Entrada 2</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+        </div>
+        <!--Div Fuerte 1-->
+        <div class="card mt-3 fuerte" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Fuerte 1</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo 2</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+          </div>
+        <!--Div Fuerte 2-->  
+        <div class="card mt-3 postre" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Fuerte 2</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+          </div>
+          <!--Div Postre 1-->
+          <div class="card mt-3 fuerte" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Postre 1</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+        </div>
+        <!--Div Postre 2-->
+        <div class="card mt-3 fuerte" style="width: 18rem;">
+          <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Postre 2</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Subtitulo</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Comentarios</a>
+            <a href="#" class="card-link">Ver mas...</a>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

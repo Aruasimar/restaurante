@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+    <!--Styles -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" type="text/css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styl.css') }}">
+
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+        <div class="container-fluid">
+
+          <a class="navbar-brand me-auto" href="/index">
+            <img src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="" width="30" height="24">
+          </a>
+          <a class="navbar-brand" href="/index"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">              
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                  </svg>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-primary" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg>
+                </a>
+
+              </li>
+              <div class="dropdown-divider"></div>
+              <li class="nav-item dropdown"><!--Estaba sin el dropdown, solamente nav-item-->
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Bienvenido, {{ username }}
+                </a><!--Estaba asi: <a class="nav-link text-primary" href="/login">Login/registro</a>-->
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#"><img src="{{url_for ('static', filename = 'img/usuario.png')}}"></a></li>
+                    <li><a class="dropdown-item" href="{{url_for('perfil')}}">Mi Cuenta</a></li>
+                    <li><a class="dropdown-item" href="#">Lista de Deseos</a></li>
+                    <li><a class="dropdown-item" href="#">Pedidos</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{{url_for('salir')}}">Cerrar Sesion</a></li>
+                  </ul>
+              </li>
+              <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="/dashboard">Dashboard</a>-->
+              <!--</li>-->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--Barra de búsqueda o Search-->
+    <div class="container-fluid mt-2">
+    <!-- Content here -->
+      <form class="form-inline my-2 my-lg-0 mx-auto d-flex">
+        <input class="form-control mr-sm-2 w-75" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+    <!--Div FILTRAR con Entradas, Platos Fuertes y Postres-->
+    <div class="row justify-content-md-center">
+    <div class="col-2 filtro">
+      <h3 class="text-center">FILTRAR</h3>
+      <aside class="px-3" id="cards">
+        <!--Entradas-->
+        <div class="form-check form-switch">
+          <input class="form-check-input micheckbox" type="checkbox" id="entradas" name="entradas" value="entradas">
+          <label class="form-check-label" for="entradas">Entradas</label>
+        </div>
+        <!--Platos fuertes-->
+        <div class="form-check form-switch">
+          <input class="form-check-input micheckbox" type="checkbox" id="Pfuertes" name="Pfuertes" value="fuertes" >
+          <label class="form-check-label" for="Pfuertes">Platos Fuertes</label>
+        </div>
+        <!--Postres-->
+        <div class="form-check form-switch">
+          <input class="form-check-input micheckbox" type="checkbox" id="postres" value="postres" >
+          <label class="form-check-label" for="postres">Postres</label>
+        </div>
+      </aside>
+    </div>
+    <!--Div que muestra: Entrada 1, Entrada 2, Fuerte 1, Fuerte 2, Postre 1, Postre 2-->
+    <div class="col-10">
+        <!--Div Entrada 1-->
+        <div class="card mt-3 entrada" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Entrada 1</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo 1</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+        </div>
+        <!--Div Entrada 2-->
+        <div class="card mt-3 entrada" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Entrada 2</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+        </div>
+        <!--Div Fuerte 1-->
+        <div class="card mt-3 fuerte" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Fuerte 1</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo 2</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+          </div>
+        <!--Div Fuerte 2-->  
+        <div class="card mt-3 postre" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Fuerte 2</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+          </div>
+          <!--Div Postre 1-->
+          <div class="card mt-3 fuerte" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Postre 1</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Subtitulo</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Comentarios</a>
+              <a href="#" class="card-link">Ver mas...</a>
+            </div>
+        </div>
+        <!--Div Postre 2-->
+        <div class="card mt-3 fuerte" style="width: 18rem;">
+          <img class="card-img-top" src="{{url_for ('static', filename = 'img/icon.jpeg')}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Postre 2</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Subtitulo</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Comentarios</a>
+            <a href="#" class="card-link">Ver mas...</a>
+          </div>
+      </div>
+    </div>
+    </div>
+  </body>
+    <!--Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</html>
